@@ -14,7 +14,7 @@ export const ingest = action({
       args.splitText, // Array of text chunks
       args.fileId, // Unique identifier for the document
       new GoogleGenerativeAIEmbeddings({
-        apiKey: "AIzaSyCVFH_3SBKyOTpvPupQsJd24-Lxuehfza8",
+        apiKey: process.env.NEXT_PUBLIC_GEMINI_API_KEY,
         model: "text-embedding-004", // 768 dimensions
         taskType: TaskType.RETRIEVAL_DOCUMENT,
         title: "Document title",
@@ -33,7 +33,7 @@ export const search = action({
   handler: async (ctx, args) => {
     const vectorStore = new ConvexVectorStore(
       new GoogleGenerativeAIEmbeddings({
-        apiKey: "AIzaSyCVFH_3SBKyOTpvPupQsJd24-Lxuehfza8",
+        apiKey: process.env.NEXT_PUBLIC_GEMINI_API_KEY,
         model: "text-embedding-004", // 768 dimensions
         taskType: TaskType.RETRIEVAL_DOCUMENT,
         title: "Document title",
@@ -66,7 +66,7 @@ export const search = action({
 //       args.splitText,
 //       args.splitText.map(() => ({ fileId: args.fileId })), // ✅ assign metadata per chunk
 //       new GoogleGenerativeAIEmbeddings({
-//         apiKey: "AIzaSyCVFH_3SBKyOTpvPupQsJd24-Lxuehfza8",
+//         apiKey: process.env.NEXT_PUBLIC_GEMINI_API_KEY,
 //         model: "text-embedding-004",
 //         taskType: TaskType.RETRIEVAL_DOCUMENT,
 //         title: "Document title",
@@ -87,7 +87,7 @@ export const search = action({
 //   handler: async (ctx, args) => {
 //     const vectorStore = new ConvexVectorStore(
 //       new GoogleGenerativeAIEmbeddings({
-//         apiKey: "AIzaSyCVFH_3SBKyOTpvPupQsJd24-Lxuehfza8",
+//         apiKey: process.env.NEXT_PUBLIC_GEMINI_API_KEY,
 //         model: "text-embedding-004",
 //         taskType: TaskType.RETRIEVAL_DOCUMENT,
 //         title: "Document title",
